@@ -18,7 +18,6 @@ const totalAliveEl = document.getElementById('totalAlive');
 const totalDeadEl = document.getElementById('totalDead');
 const totalFavoritesEl = document.getElementById('totalFavorites');
 
-// Funções de LocalStorage para gerenciar favoritos
 function getFavorites() {
     const favorites = localStorage.getItem('rickAndMortyFavorites');
     return favorites ? JSON.parse(favorites) : [];
@@ -102,7 +101,6 @@ function createCards(characters) {
             ? 'status-dead' 
             : 'status-unknown';
 
-        // Verifica se o personagem está nos favoritos
         const isFav = isFavorite(character.id);
         const favoriteClass = isFav ? 'active' : '';
         const favoriteIcon = isFav ? '♥' : '♡';
@@ -177,7 +175,6 @@ function toggleFavorite(characterId) {
         btn.textContent = '♡';
         console.log(`Personagem ${characterId} removido dos favoritos`);
         
-        // Se estiver na visualização de favoritos, recarrega
         if (showingFavorites) {
             showFavorites();
         }
@@ -189,7 +186,6 @@ function toggleFavorite(characterId) {
     }
 }
 
-// Função para buscar e exibir personagens favoritos
 async function showFavorites() {
     const favorites = getFavorites();
     
@@ -210,7 +206,6 @@ async function showFavorites() {
         errorElement.style.display = 'none';
         cardsContainer.innerHTML = '';
 
-        // Busca todos os personagens favoritos (a API permite buscar múltiplos IDs)
         const url = `${API_URL}/${favorites.join(',')}`;
         const response = await fetch(url);
 
@@ -220,7 +215,6 @@ async function showFavorites() {
 
         const data = await response.json();
         
-        // Se for apenas um favorito, a API retorna um objeto, não um array
         allCharacters = Array.isArray(data) ? data : [data];
 
         updateStats(allCharacters);
@@ -256,7 +250,6 @@ searchInput.addEventListener('keypress', (e) => {
 
 favoritesBtn.addEventListener('click', () => {
     if (showingFavorites) {
-        // Se já está mostrando favoritos, volta para a lista normal
         showingFavorites = false;
         favoritesBtn.classList.remove('active');
         searchInput.value = '';
@@ -264,7 +257,6 @@ favoritesBtn.addEventListener('click', () => {
         currentPage = 1;
         fetchCharacters(currentPage);
     } else {
-        // Mostra favoritos
         showingFavorites = true;
         favoritesBtn.classList.add('active');
         showFavorites();
