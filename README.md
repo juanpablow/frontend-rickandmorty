@@ -1,4 +1,4 @@
-# 🛸 Portal Dimensional Rick and Morty
+# 🛸 API Rick and Morty
 
 ## 📋 Sobre o Projeto
 
