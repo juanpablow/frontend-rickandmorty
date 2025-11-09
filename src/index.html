@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick and Morty - Projeto Acadêmico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🛸 Projeto Rick and Morty</h1>
+            <p>Explore o multiverso e conheça todos os personagens</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="filters">
+            <div class="filter-container">
+                <input type="text" id="searchInput" placeholder="Buscar personagem...">
+                <select id="statusFilter">
+                    <option value="">Todos os Status</option>
+                    <option value="Alive">Vivo</option>
+                    <option value="Dead">Morto</option>
+                    <option value="unknown">Desconhecido</option>
+                </select>
+                <button id="searchBtn">Buscar</button>
+                <button id="favoritesBtn" class="favorites-btn">⭐ Favoritos</button>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <h3 id="totalCharacters">0</h3>
+                <p>Personagens Carregados</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="totalAlive">0</h3>
+                <p>Vivos</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="totalDead">0</h3>
+                <p>Mortos</p>
+            </div>
+            <div class="stat-card stat-favorites">
+                <h3 id="totalFavorites">0</h3>
+                <p>⭐ Favoritos</p>
+            </div>
+        </section>
+
+        <section id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Abrindo portal dimensional...</p>
+        </section>
+
+        <section id="error" class="error" style="display: none;">
+            <p>Erro ao carregar personagens. Tente novamente!</p>
+        </section>
+
+        <section id="cardsContainer" class="cards-container">
+        </section>
+
+        <section class="pagination">
+            <button id="prevBtn" disabled>← Anterior</button>
+            <span id="pageInfo">Página 1</span>
+            <button id="nextBtn">Próxima →</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>Desenvolvido usando <a href="https://rickandmortyapi.com/" target="_blank">Rick and Morty API</a></p>
+        <p>Projeto Acadêmico - UniFECAF Web Development Front-End</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
